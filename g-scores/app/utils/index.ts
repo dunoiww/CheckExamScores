@@ -20,8 +20,8 @@ export enum SubjectColor {
     sinh_hoc = 'bg-pink-300',
     lich_su = 'bg-indigo-300',
     dia_li = 'bg-gray-300',
-    gdcd = 'bg-blue-300',
-    ma_ngoai_ngu = 'bg-yellow-300',
+    gdcd = 'bg-blue-400',
+    ma_ngoai_ngu = 'bg-yellow-400',
 }
 
 export enum Block {

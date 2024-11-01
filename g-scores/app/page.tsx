@@ -2,18 +2,18 @@
 import { Numbers } from '@mui/icons-material';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Score from './components/Score/Score';
+import Toast from './components/Toast/Toast';
 import useGetScore from './hooks/useGetScore';
 import { Subject } from './utils';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Toast from './components/Toast/Toast';
 
 export default function Home() {
     const [sbd, setSbd] = useState('')
     const [data, setData] = useState<[string, unknown][]>([])
-    const { score, isLoading, error, refetch } = useGetScore(sbd)
+    const { score, error, refetch } = useGetScore(sbd)
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSbd(event.target.value)
     }

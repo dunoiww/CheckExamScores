@@ -13,7 +13,7 @@ export class ScoresController {
             if (error.message === 'Không tìm thấy số báo danh') {
                 throw new HttpException(error.message, HttpStatus.NOT_FOUND);
             }
-            throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new HttpException('Lỗi server', HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

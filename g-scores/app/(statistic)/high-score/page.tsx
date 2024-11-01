@@ -1,4 +1,5 @@
 'use client'
+import Toast from '@/app/components/Toast/Toast'
 import useGetTopScores from '@/app/hooks/useGetTopScores'
 import { HighScore } from '@/app/types/score'
 import { Block } from '@/app/utils'
@@ -19,8 +20,10 @@ import {
     CircularProgress,
 } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const StyledTableCell = styled(TableCell)(() => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: 'white',
         color: 'black',
@@ -30,7 +33,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }))
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
+const StyledTableRow = styled(TableRow)(() => ({
     '&:nth-of-type(odd)': {
         backgroundColor: 'rgba(0, 0, 0, 0.04)',
     },
@@ -69,6 +72,10 @@ export default function Score() {
 
     const handleOnClick = (block: keyof typeof Block) => {
         setCurrentBlock(block)
+    }
+
+    if (error) {
+        Toast(error.message)
     }
 
     return (
@@ -127,6 +134,7 @@ export default function Score() {
                     )}
                 </div>
             </Box>
+            <ToastContainer />
         </Container>
     )
 }

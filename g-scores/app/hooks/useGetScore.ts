@@ -5,7 +5,8 @@ const useGetScore = (sbd: string) => {
     const { data: score, isLoading, error, refetch } = useQuery({
         queryKey: ["score", sbd],
         queryFn: () => getScores(sbd),
-        retry: 2
+        retry: 2,
+        enabled: false
     })
 
     return { score: score || [], isLoading, error, refetch }

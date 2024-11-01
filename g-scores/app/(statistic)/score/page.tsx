@@ -1,9 +1,13 @@
 'use client'
+import Toast from '@/app/components/Toast/Toast'
 import useGetScoreBySubject from '@/app/hooks/useGetScoreBySubject'
 import { Subject, SubjectColor } from '@/app/utils'
 import { Box, Container, Typography, Stack, Paper } from '@mui/material'
 import { BarChart } from '@mui/x-charts/BarChart'
 import { useEffect, useRef, useState } from 'react'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Score() {
     const [currentSubject, setCurrentSubject] = useState<keyof typeof Subject>('toan');
@@ -36,6 +40,10 @@ export default function Score() {
         setCurrentSubject(subject);
     };
 
+    if (error) {
+        Toast(error.message);
+    }
+
     return (
         <Container>
             <div>
@@ -64,7 +72,7 @@ export default function Score() {
                         ))
                     }
                 </Stack>
-                <div className='flex-1 justify-center items-center'>
+                <div className='flex flex-col flex-1 justify-center items-center'>
                     <Typography variant="h5" textAlign={'center'} gutterBottom>Môn {Subject[currentSubject]}</Typography>
                     <BarChart
                         dataset={score}
@@ -80,6 +88,7 @@ export default function Score() {
                     />
                 </div>
             </Box>
+            <ToastContainer />
         </Container>
     );
 }

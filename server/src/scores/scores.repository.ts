@@ -19,10 +19,8 @@ export class ScoreRepository {
             }
             return result;
         } catch (error) {
-            if (error.message === 'Không tìm thấy số báo danh') {
-                throw new Error(error.message);
-            }
-            throw new Error('Lỗi khi tìm kiếm');
+            console.log(error);
+            throw new Error(error.message);
         }
     }
 
